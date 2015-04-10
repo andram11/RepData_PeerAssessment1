@@ -8,6 +8,7 @@ echo = TRUE  # Always make code visible
 options(scipen = 1)  # Turn off scientific notations for numbers
 
 ## Loading and preprocessing the data
+
 data <- read.csv("activity.csv", colClasses = c("integer", "Date", "factor"))
 data$month <- as.numeric(format(data$date, "%m"))
 noNA <- na.omit(data)
@@ -27,10 +28,12 @@ ggplot(noNA, aes(date, steps)) + geom_bar(stat = "identity", colour = "steelblue
 Calculate and report the mean and median total number of steps taken per day
 
 Mean total number of steps taken per day:
+
 totalSteps <- aggregate(noNA$steps, list(Date = noNA$date), FUN = "sum")$x
 mean(totalSteps)
 
 Median total number of steps taken per day:
+
 median(totalSteps)
 
 ## What is the average daily activity pattern?
